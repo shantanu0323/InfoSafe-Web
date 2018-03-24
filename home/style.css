@@ -1,0 +1,146 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: helvetica;
+}
+
+body {
+    background-image: url(../assets/background-image.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+#tilted-toolbar {
+    background-color: rgba(171, 71, 188, 0.5);
+    position: absolute;
+    height: 200px;
+    width: 1400px;
+    top: -18%;
+    left: -3%;
+    overflow: hidden;
+    transform: rotate(-6deg);
+}
+
+#below-tilted-toolbar {
+    background-color: rgba(223, 120, 239, 0.5);
+    position: absolute;
+    height: 200px;
+    width: 1400px;
+    top: -17.5%;
+    overflow: hidden;
+    left: -3%;
+    transform: rotate(-6deg);
+}
+
+#infosafe {
+    font-size: 34px;
+    letter-spacing: 3px;
+    position: absolute;
+    color: white;
+    z-index: 10;
+    margin: 20px;
+    top: 12px;
+    font-family: chocolatine;
+}
+
+#logout {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(200, 100, 209);
+    color: white;
+    padding: 10px;
+    width: 120px;
+    transition:  all 0.3s;
+}
+
+#logout:hover {
+    background-color: #efed40;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+    color: #555;
+}
+
+#hospital-details {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 40%;
+    opacity: 0;
+    transform: translate(-50%,-30%);
+    transition: all 0.5s;
+}
+
+table {
+    width: 100%;
+}
+#hospital-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+}
+
+.hospital-icon-container {
+    text-align: center;
+}
+#hospital-name {
+    font-size: 50px;
+    margin-left: 10px;
+    color: #33ff88;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+.small-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-td {
+    width: 20px;
+    text-align: center;
+}
+
+.address-row {
+    padding-top: 30px;
+}
+
+.phone-row, .email-row {
+    padding-top: 15px;
+}
+
+#hospital-address, #hospital-phone, #hospital-email {
+    padding-left: 10px;
+    font-size: 20px;
+    color: #222222;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@font-face {
+    font-family: chocolatine;
+    src: url('../assets/fonts/chocolatine.ttf');
+}

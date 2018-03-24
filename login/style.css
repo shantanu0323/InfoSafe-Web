@@ -3,18 +3,16 @@
     padding: 0px;
     font-family: helvetica;
 }
-
 body {
-    background-color: aquamarine;
+    background-image: url(../assets/background-image.jpg);
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .container {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-image: url(../assets/background-image.jpg);
-    background-attachment: fixed;
-    background-size: cover;
 }
 
 .login-container {

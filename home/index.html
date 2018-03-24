@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | InfoSafe</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="tilted-toolbar"></div>
+        <div id="below-tilted-toolbar"></div>
+        <p id="infosafe">Welcome to Infosafe</p>
+        <input type="button" value="Logout" id="logout" onclick="logout()">
+        <div id="hospital-details">
+            <table>
+                <tr>
+                    <td class="hospital-icon-container">
+                        <img src="../assets/hospital-icon.png" id="hospital-icon">
+                    </td>
+                    <td colspan="2">
+                        <p id="hospital-name">Hospital Name</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td  class="address-row"></td>
+                    <td class="icon-td address-row">
+                        <img src="../assets/location-icon.png" class="small-icon">
+                    </td>
+                    <td  class="address-row">
+                        <p id="hospital-address">Address</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="email-row"></td>
+                    <td class="icon-td email-row">
+                        <img src="../assets/email-icon.png" class="small-icon">
+                    </td>
+                    <td class="email-row">
+                        <p id="hospital-email">Email Id</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="phone-row"></td>
+                    <td class="icon-td phone-row">
+                        <img src="../assets/phone-icon.png" class="small-icon">
+                    </td>
+                    <td class="phone-row">
+                        <p id="hospital-phone">Phone No</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBTUHKtZTB0ED36nNPRW4a1thBNxnwdulc",
+            authDomain: "infosafe-2ef9b.firebaseapp.com",
+            databaseURL: "https://infosafe-2ef9b.firebaseio.com",
+            projectId: "infosafe-2ef9b",
+            storageBucket: "infosafe-2ef9b.appspot.com",
+            messagingSenderId: "18365317262"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="skeleton.js"></script>
+</body>
+
+
+</html>

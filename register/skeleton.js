@@ -22,7 +22,7 @@ function execute() {
             var hospitalsRef = firebase.database().ref('hospitals');
             hospitalsRef.on('value',function(snapshot) {
                 if(snapshot.hasChild(uid)) {
-                    window.location = "../main.html";
+                    window.location = "../home";
                 }
             });
             

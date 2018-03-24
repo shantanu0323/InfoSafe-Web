@@ -5,7 +5,6 @@ function execute() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            window.location = "../home/";
             var displayName = user.displayName;
             var email = user.email;
             var emailVerified = user.emailVerified;
@@ -14,8 +13,21 @@ function execute() {
             var uid = user.uid;
             var providerData = user.providerData;
             alert(uid);
-            // ...
+            var hospitalRef = firebase.database().ref('hospitals/' + uid);
+            hospitalRef.once('value').then(function (snapshot) {
+                //                alert(snapshot.val().name);
+                document.getElementById('hospital-name').textContent = snapshot.val().name;
+                document.getElementById('hospital-address').textContent = snapshot.val().address;
+                document.getElementById('hospital-phone').textContent = snapshot.val().phone;
+                document.getElementById('hospital-email').textContent = snapshot.val().email;
+
+                setTimeout(function () {
+                    document.getElementById('hospital-details').style.opacity = '1';
+                }, 100);
+            });
+
         } else {
+            window.location = "../login/";
             // User is signed out.
             // ...
         }
