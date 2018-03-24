@@ -36,7 +36,7 @@ function loginUser() {
 }
 
 function redirectToRegister() {
-    window.location = "register/";
+    window.location = "../register/";
 }
 
 function logout() {
