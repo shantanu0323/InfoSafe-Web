@@ -1,0 +1,161 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: helvetica;
+}
+
+body {
+    background-color: aquamarine;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../assets/background-image.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.register-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 450px;
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+#hospital-icon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: -40px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+h2 {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    color: #fefefe;
+    transform: translate(-50%,0);
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+}
+
+#email-label, #password-label, #name-label, #address-label, #phone-label{
+    position: absolute;
+    left: 10%;
+    top: 30%;
+    color:#aa99ee;
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+}
+
+#name-label{
+    top: 18%;    
+}
+
+#address-label {
+    top: 31%;
+}
+
+#phone-label {
+    top: 44%;
+}
+
+#email-label {
+    top: 57%;
+}
+
+#password-label {
+    top: 70%;
+}
+
+::placeholder {
+    color: #ddd;
+}
+#email, #password , #name, #address, #phone{
+    position: absolute;
+    top: 35%;
+    padding: 8px;
+    width: 284px;
+    border: none;
+    background: none;
+    border-bottom: 2px solid #aa99ee;
+    color: #fefefe;
+}
+
+#name {
+    top: 22%;
+}
+
+#address {
+    top: 35%
+}
+
+#phone {
+    top: 48%
+}
+
+#email {
+    top: 61%
+}
+#password {
+    top: 74%;
+}
+
+#email:focus, #password:focus, #name:focus, #address:focus, #phone:focus {
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+}
+#register-button {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%,0);
+    padding: 7px;
+    width: 150px;
+    border: none;
+    border-radius: 50px;
+    background-color: #aa99ee;
+    color: #fefefe;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#register-button:hover,#register-button:focus {
+    background-color: #efed40;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+}
+
+#register-button:active {
+    background-color: #ffffff;    
+}
+
+#login-button {
+    position: absolute;
+    top: 94%;
+    border: none;
+    background: none;
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+    color: #aa99ee;
+    left: 50%;
+    transform: translate(-50%,0);
+    transition: all 0.3s;
+}
+
+#login-button:hover, #login-button:focus {
+    color: #efed40;
+    cursor: pointer;
+    
+}
+
+#login-button:active {
+    color: white;
+}

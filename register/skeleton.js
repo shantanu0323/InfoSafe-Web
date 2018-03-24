@@ -35,10 +35,6 @@ function loginUser() {
 
 }
 
-function redirectToRegister() {
-    window.location = "register/";
-}
-
 function logout() {
     firebase.auth().signOut().then(function () {
         alert('Signed Out');

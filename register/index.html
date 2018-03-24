@@ -4,23 +4,29 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
     <div class="container">
-        <div class="login-container">
+        <div class="register-container">
             <img src='../assets/hospital-icon.png' id='hospital-icon'>
-            <h2>Login</h2>
+            <h2>Register</h2>
             <form>
+                <label id="name-label">Name of your organisation</label>
+                <input id="name" type="text" placeholder="Name of the organisation...">
+                <label id="address-label">Address</label>
+                <input id="address" type="text" placeholder="Address...">
+                <label id="phone-label">Phone No</label>
+                <input id="phone" type="tel" placeholder="Phone...">
                 <label id="email-label">Email</label>
                 <input id="email" type="email" placeholder="Email...">
                 <label id="password-label">Password</label>
                 <input id="password" type="password" placeholder="Password...">
-                <input id="login-button" type="button" value="Login" onclick="loginUser()">
-                <input id="register-button" type="button" value="Not a member yet? Join us Now" onclick="redirectToRegister()">
+                <input id="register-button" type="button" value="Register" onclick="registerUser()">
+                <input id="login-button" type="button" value="Already a member? Sign In" onclick="redirectToLogin()">
             </form>
         </div>
 
