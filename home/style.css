@@ -10,11 +10,12 @@ body {
     background-size: cover;
 }
 
-.container {
+#container {
     position: relative;
     width: 100vw;
     height: 100vh;
-
+    opacity: 0;
+    transition: all 0.5s;
 }
 
 #tilted-toolbar {
@@ -59,14 +60,16 @@ body {
     background-color: rgb(200, 100, 209);
     color: white;
     padding: 10px;
+    font-size: 16px;
     width: 120px;
-    transition:  all 0.3s;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
 }
 
 #logout:hover {
     background-color: #efed40;
     cursor: pointer;
-    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
     color: #555;
 }
 
@@ -75,29 +78,30 @@ body {
     top: 50%;
     left: 25%;
     width: 40%;
-    opacity: 0;
-    transform: translate(-50%,-30%);
+    transform: translate(-50%, -30%);
     transition: all 0.5s;
 }
 
 table {
     width: 100%;
 }
+
 #hospital-icon {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
 }
 
 .hospital-icon-container {
     text-align: center;
 }
+
 #hospital-name {
     font-size: 50px;
     margin-left: 10px;
     color: #33ff88;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .small-icon {
@@ -114,21 +118,156 @@ table {
     padding-top: 30px;
 }
 
-.phone-row, .email-row {
+.phone-row,
+.email-row {
     padding-top: 15px;
 }
 
-#hospital-address, #hospital-phone, #hospital-email {
+#hospital-address,
+#hospital-phone,
+#hospital-email {
     padding-left: 10px;
     font-size: 20px;
     color: #222222;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
+#scan-patient {
+    position: absolute;
+    top: 50%;
+    /*    top: 25%;*/
+    left: 75%;
+    /*    left:70%;*/
+    transform: translate(-50%, -50%);
+    border: none;
+    /*    background: none;*/
+    background: #ff7043;
+    padding: 20px;
+    font-size: 30px;
+    color: white;
+    /*    color: rgb(200, 100, 209);*/
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    /*    box-shadow: 0px 0px  0px 0px rgba(0,0,0,0);*/
+    transition: all 0.5s;
+}
 
+#scan-patient:hover,
+#scan-patient:focus {
+    background: #efed40;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
+}
 
+#scan-patient:active {
+    background: white;
+}
 
+#stop-scanning {
+    position: absolute;
+    /*    top: 22%;*/
+    top: -20%;
+    /*    left: 88%;*/
+    left: 25%;
+    border: none;
+    font-size: 18px;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    color: rgb(200, 100, 209);
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(200, 100, 209);
+    transition: all 0.5s;
+}
 
+#stop-scanning:hover,
+#stop-scanning:focus {
+    background: rgb(200, 100, 209);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
+}
+
+#preview {
+    width: 400px;
+    position: absolute;
+    top: -40%;
+    /*    top: 35%;*/
+    overflow: hidden;
+    left: 60%;
+    opacity: 0;
+    /*    opacity: 1;*/
+    transition: all 1s;
+}
+
+#otp-container {
+    position: absolute;
+    /*    top: 80%;*/
+    top: -20%;
+    left: 75%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: all 1s;
+}
+
+.otp-fields {
+    width: 20px;
+    background: none;
+    border: none;
+    color: white;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid #33ff88;
+    margin: 5px;
+    box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.5);
+    font-size: 24px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 3px;
+    transition: all 0.3s;
+}
+
+.otp-fields:focus {
+    box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, 0.5);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+#retrieve-patient-info {
+    position: absolute;
+    right: 30px;
+    /*    top: 90%;*/
+    top: -10%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: rgb(200, 100, 209);
+    color: white;
+    padding: 10px;
+    width: 250px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+}
+
+#retrieve-patient-info:hover {
+    background-color: #efed40;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
+    color: #555;
+}
 
 
 

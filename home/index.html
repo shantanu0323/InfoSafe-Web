@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | InfoSafe</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../instascan.min.js"></script>
 </head>
 
 <body>
 
-    <div class="container">
+    <div id="container">
         <div id="tilted-toolbar"></div>
         <div id="below-tilted-toolbar"></div>
         <p id="infosafe">Welcome to Infosafe</p>
@@ -26,11 +27,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td  class="address-row"></td>
+                    <td class="address-row"></td>
                     <td class="icon-td address-row">
                         <img src="../assets/location-icon.png" class="small-icon">
                     </td>
-                    <td  class="address-row">
+                    <td class="address-row">
                         <p id="hospital-address">Address</p>
                     </td>
                 </tr>
@@ -54,6 +55,20 @@
                 </tr>
             </table>
         </div>
+
+        <input type="button" value="Scan Patient's Identity" onclick="startScanning()" id="scan-patient">
+        <input type="button" value="X" onclick="stopScanningInfo()" id="stop-scanning">
+        <video id="preview"></video>
+        <div id="otp-container">
+            <input id="otp0" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
+            <input id="otp1" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
+            <input id="otp2" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
+            <input id="otp3" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
+            <input id="otp4" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
+            <input id="otp5" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
+        </div>
+        <input id="retrieve-patient-info" type="button" value="Retrieve Patient Information">
+
     </div>
 
 

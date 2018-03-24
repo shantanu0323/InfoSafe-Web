@@ -1,7 +1,21 @@
 window.onload = execute();
 
+
+let scanner;
+var scanPatient;
+var preview;
+var otpContainer;
+var retrievePatientInfo;
+var stopScanning;
+
 function execute() {
 
+    scanPatient = document.getElementById('scan-patient');
+    preview = document.getElementById('preview');
+    otpContainer = document.getElementById('otp-container');
+    retrievePatientInfo = document.getElementById('retrieve-patient-info');
+    stopScanning = document.getElementById('stop-scanning');
+    
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -22,7 +36,7 @@ function execute() {
                 document.getElementById('hospital-email').textContent = snapshot.val().email;
 
                 setTimeout(function () {
-                    document.getElementById('hospital-details').style.opacity = '1';
+                    document.getElementById('container').style.opacity = '1';
                 }, 100);
             });
 
@@ -57,5 +71,106 @@ function logout() {
     }, function (error) {
         console.error('Sign Out Error', error);
     });
+
+}
+
+function setFocus(obj) {
+    obj.value = obj.value.slice(0, obj.maxLength);
+    if (obj.value.length == 1) {
+        var currentElementId = document.activeElement.id;
+        if (currentElementId.charAt(3) != '5') {
+            var index = parseInt(currentElementId.charAt(3)) + 1;
+            var nextElementId = "otp" + index;
+            document.getElementById(nextElementId).focus();
+        }
+    }
+}
+
+function startCamera() {
+    scanner = new Instascan.Scanner({
+        video: document.getElementById('preview')
+    });
+    scanner.addListener('scan', function (content) {
+        alert(content);
+        scanner = null;
+    });
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
+}
+
+function startScanning() {
+    startCamera();
+
+    scanPatient.setAttribute("style",
+        "top : 25%;" +
+        "left : 71%;" +
+        "background : none;" +
+        "color : rgb(200, 100, 209);" +
+        "box-shadow : 0px 0px  0px 0px rgba(0,0,0,0);" +
+        "border-bottom : 3px solid rgb(200, 100, 209);"
+    );
+
+    setTimeout(function () {
+        preview.setAttribute("style",
+            "top: 35%;" +
+            "opacity : 1;"
+        );
+    }, 1000);
+
+    otpContainer.setAttribute("style",
+        "top:80%;" +
+        "opacity:1;"
+    );
+    
+    retrievePatientInfo.setAttribute("style",
+        "top:90%;" +
+        "opacity:1;"
+    );
+    
+    
+     stopScanning.setAttribute("style",
+        "top:22%;" +
+        "left: 88%;" + 
+        "opacity:1;"
+    );
+}
+
+function stopScanningInfo() {
+    scanPatient.setAttribute("style",
+        "top : 50%;" +
+        "left : 75%;" +
+        "background : #ff7043;" +
+        "color : white;" +
+        "box-shadow : 0px 0px 10px 1px rgba(0,0,0,0.5);" +
+        "border : none;"
+    );
+
+    preview.setAttribute("style",
+        "top: -40%;" +
+        "opacity : 0;"
+    );
+
+    otpContainer.setAttribute("style",
+        "top:-20%;" +
+        "opacity:1;"
+    );
+    
+        retrievePatientInfo.setAttribute("style",
+        "top:-10%;" +
+        "opacity:0;"
+    );
+    
+     stopScanning.setAttribute("style",
+        "top:-20%;" +
+        "left: 25%;" + 
+        "opacity:0;"
+    );
 
 }
