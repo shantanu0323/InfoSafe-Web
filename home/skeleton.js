@@ -16,13 +16,14 @@ var keyToEncryptKey = null;
 var OTP = "";
 var inverseKey = null;
 var originalKey = null;
+var uid = null;
 
 var characters = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-            ' ', '@', '.', '+', '-',
-            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
+    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    ' ', '@', '.', '+', '-',
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
 
 function execute() {
 
@@ -40,7 +41,7 @@ function execute() {
             var emailVerified = user.emailVerified;
             var photoURL = user.photoURL;
             var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
+            uid = user.uid;
             var providerData = user.providerData;
             //            alert(uid);
             var hospitalRef = firebase.database().ref('hospitals/' + uid);
@@ -123,6 +124,21 @@ function startCamera() {
     });
 }
 
+function registerPatientToHospital() {
+    var hospitalPatientRef = firebase.database();
+    hospitalPatientRef.ref("hospitals/" + uid + "/patients").once('value').then(function (snapshot) {
+        if (snapshot.hasChild(patientUserId)) {
+            hospitalPatientRef.ref("hospitals/" + uid + "/patients/" + patientUserId).set(null);
+        } else {
+            // Add Patient to the Hospital's Database
+            var patientRef = firebase.database().ref("users/" + patientUserId);
+            patientRef.once('value').then(function (snapshot) {
+                hospitalPatientRef.ref("hospitals/" + uid + "/patients/" + patientUserId).set(snapshot.val());
+            });
+        }
+    });
+}
+
 function processQRData(content) {
     resetAllValues();
     var root = JSON.parse(content);
@@ -201,7 +217,33 @@ function decryptDetails(name, age, bloodgroup, gender, email, phone) {
     dEmail = decryptText(email);
     dPhone = decryptText(phone);
 
+    updateRegisterButton();
     showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone);
+}
+
+function updateRegisterButton() {
+    var registerPatient = document.getElementById("register-patient");
+    var hospitalPatientRef = firebase.database();
+    hospitalPatientRef.ref("hospitals/" + uid + "/patients").on('value', function (snapshot) {
+        if (snapshot.hasChild(patientUserId)) {
+            registerPatient.setAttribute("style",
+                "background-color : #aa0000;" +
+                "top : 85%;" +
+                "left : 73%;" +
+                "opacity : 1;"
+            );
+            registerPatient.value = "Remove Patient";
+        } else {
+            registerPatient.setAttribute("style",
+                "background-color : #33ee77;" +
+                "top : 85%;" +
+                "left : 73%;" +
+                "opacity : 1;"
+            );
+            registerPatient.value = "Register Patient";
+        }
+
+    });
 }
 
 function showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone) {
