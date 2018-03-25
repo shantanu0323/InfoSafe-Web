@@ -58,7 +58,20 @@
 
         <input type="button" value="Scan Patient's Identity" onclick="startScanning()" id="scan-patient">
         <input type="button" value="X" onclick="stopScanningInfo()" id="stop-scanning">
-        <video id="preview"></video>
+        <div id="preview-container">
+            <video id="preview"></video>
+            <div class="pads">
+                <div class="vertical-pads"></div>
+                <div class="vertical-pads right-pad"></div>
+                <div class="horizontal-pads"></div>
+                <div class="horizontal-pads bottom-pad"></div>
+            </div>
+            <div class="qr-border-container">
+                <div class="scanner-container">
+                    
+                </div>
+            </div>
+        </div>
         <div id="otp-container">
             <input id="otp0" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
             <input id="otp1" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
@@ -87,6 +100,7 @@
             messagingSenderId: "18365317262"
         };
         firebase.initializeApp(config);
+
     </script>
     <script src="skeleton.js"></script>
 </body>

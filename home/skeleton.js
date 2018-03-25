@@ -3,7 +3,7 @@ window.onload = execute();
 
 let scanner;
 var scanPatient;
-var preview;
+var previewContainer;
 var otpContainer;
 var retrievePatientInfo;
 var stopScanning;
@@ -11,7 +11,7 @@ var stopScanning;
 function execute() {
 
     scanPatient = document.getElementById('scan-patient');
-    preview = document.getElementById('preview');
+    previewContainer = document.getElementById('preview-container');
     otpContainer = document.getElementById('otp-container');
     retrievePatientInfo = document.getElementById('retrieve-patient-info');
     stopScanning = document.getElementById('stop-scanning');
@@ -82,6 +82,8 @@ function setFocus(obj) {
             var index = parseInt(currentElementId.charAt(3)) + 1;
             var nextElementId = "otp" + index;
             document.getElementById(nextElementId).focus();
+        } else {
+            document.getElementById("retrieve-patient-info").focus();
         }
     }
 }
@@ -117,11 +119,11 @@ function startScanning() {
     );
 
     setTimeout(function () {
-        preview.setAttribute("style",
+        previewContainer.setAttribute("style",
             "top: 35%;" +
             "opacity : 1;"
         );
-    }, 1000);
+    }, 500);
 
     otpContainer.setAttribute("style",
         "top:80%;" +
@@ -151,7 +153,7 @@ function stopScanningInfo() {
         "border : none;"
     );
 
-    preview.setAttribute("style",
+    previewContainer.setAttribute("style",
         "top: -40%;" +
         "opacity : 0;"
     );

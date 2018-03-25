@@ -194,8 +194,10 @@ table {
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
 }
 
+#preview-container,
 #preview {
     width: 400px;
+    height: 250px;
     position: absolute;
     top: -40%;
     /*    top: 35%;*/
@@ -205,6 +207,90 @@ table {
     /*    opacity: 1;*/
     transition: all 1s;
 }
+
+#preview {
+    opacity: 1;
+    position: static;
+    top: 0%;
+    left: 0%;
+}
+
+#preview-container {
+    /*    background-color: green*/
+}
+
+.pads {
+    z-index: 20px;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.vertical-pads {
+    top: 0%;
+    left: 0%;
+    width: 90px;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.right-pad {
+    position: absolute;
+    left: auto;
+    right: 0%;
+}
+
+.horizontal-pads {
+    top: 0%;
+    left: 90px;
+    width: 220px;
+    height: 15px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bottom-pad {
+    top: auto;
+    bottom: 0%;
+}
+
+.qr-border-container {
+    z-index: 20px;
+    top: 14px;
+    left: 88px;
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    border: 2px solid white;
+}
+
+.scanner-container {
+    border-bottom: 2px solid #00cc99;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 220, 150, 0.5));
+    width: 100%;
+    top: 0;
+    overflow: hidden;
+    position: absolute;
+    height: 0px;
+    animation-name: scan-animation;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes scan-animation {
+    from {
+        top: -60px;
+        height: 0px;
+    }
+    to {
+        top: 60px;
+        height: 160px;
+    }
+}
+
 
 #otp-container {
     position: absolute;
@@ -259,14 +345,20 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 10px;
     width: 250px;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
-    transition: all 1s;
+    transition: all 0.5s;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-#retrieve-patient-info:hover {
+#retrieve-patient-info:hover,
+#retrieve-patient-info:focus {
     background-color: #efed40;
     cursor: pointer;
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
     color: #555;
+}
+
+#retrieve-patient-info:active {
+    background-color: white;
 }
 
 
