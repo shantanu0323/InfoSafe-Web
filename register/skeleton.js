@@ -78,7 +78,7 @@ function redirectToLogin() {
 
 function logout() {
     firebase.auth().signOut().then(function () {
-        alert('Signed Out');
+//        alert('Signed Out');
     }, function (error) {
         console.error('Sign Out Error', error);
     });

@@ -13,7 +13,7 @@ function execute() {
             var isAnonymous = user.isAnonymous;
             var uid = user.uid;
             var providerData = user.providerData;
-            alert(uid);
+//            alert(uid);
             // ...
         } else {
             // User is signed out.
@@ -41,7 +41,7 @@ function redirectToRegister() {
 
 function logout() {
     firebase.auth().signOut().then(function () {
-        alert('Signed Out');
+//        alert('Signed Out');
     }, function (error) {
         console.error('Sign Out Error', error);
     });
