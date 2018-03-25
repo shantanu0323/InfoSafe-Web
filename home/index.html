@@ -60,14 +60,18 @@
         <input type="button" value="X" onclick="stopScanningAndReset()" id="stop-scanning">
         <div id="preview-container">
             <video id="preview"></video>
-            <div class="pads">
+            <div class="pads" id="pads">
                 <div class="vertical-pads"></div>
                 <div class="vertical-pads right-pad"></div>
                 <div class="horizontal-pads"></div>
                 <div class="horizontal-pads bottom-pad"></div>
             </div>
-            <div class="qr-border-container">
-                <div class="scanner-container">
+            <div id="qr-done">
+                <img id="tick-icon" src="../assets/ic-tick.png">
+                <p id="qr-done-text">QR Scanned Successfully</p>
+            </div>
+            <div class="qr-border-container" id="qr-border-container">
+                <div class="scanner-container" id="scanner-container">
 
                 </div>
             </div>

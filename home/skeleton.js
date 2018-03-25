@@ -110,7 +110,6 @@ function startCamera() {
         video: document.getElementById('preview')
     });
     scanner.addListener('scan', function (content) {
-        alert(content);
         processQRData(content);
     });
     Instascan.Camera.getCameras().then(function (cameras) {
@@ -153,7 +152,23 @@ function processQRData(content) {
     n = parseInt(n / 10);
     document.getElementById("otp0").focus();
 
+    showFeedbackOfQRDone();
+}
 
+function showFeedbackOfQRDone() {
+    var preview = document.getElementById("preview");
+    var pads = document.getElementById("pads");
+    var qrDone = document.getElementById("qr-done");
+    var scannerContainer = document.getElementById("scanner-container");
+    var qrBorderContainer = document.getElementById("qr-border-container");
+    var tickIcon = document.getElementById("tick-icon");
+    
+    preview.setAttribute("style", "opacity : 0;");
+    pads.setAttribute("style", "opacity : 0;");
+    scannerContainer.setAttribute("style", "opacity : 0; animation-name: none; border:none;");
+    qrBorderContainer.setAttribute("style", "opacity : 0;"); 
+    qrDone.setAttribute("style", "opacity : 1;");
+    tickIcon.setAttribute("style", "width : 90px; height: 90px;");
 }
 
 function startRetrieving() {
@@ -354,6 +369,19 @@ function stopScanningAndReset() {
     var patientInfoContainer = document.getElementById("patient-info-container");
     var registerPatient = document.getElementById("register-patient");
     var stopRegisteringPatient = document.getElementById("stop-registering-patient");
+    var preview = document.getElementById("preview");
+    var pads = document.getElementById("pads");
+    var qrDone = document.getElementById("qr-done");
+    var scannerContainer = document.getElementById("scanner-container");
+    var qrBorderContainer = document.getElementById("qr-border-container");
+    var tickIcon = document.getElementById("tick-icon");
+    
+    preview.setAttribute("style", "opacity : 1;");
+    pads.setAttribute("style", "opacity : 1;");
+    scannerContainer.setAttribute("style", "opacity : 1; animation-name: scan-animation; border-bottom: 2px solid #00cc99;");
+    qrBorderContainer.setAttribute("style", "opacity : 1;"); 
+    qrDone.setAttribute("style", "opacity : 0;");
+    tickIcon.setAttribute("style", "width : 0px; height: 0px;");
 
     patientInfoContainer.setAttribute("style",
         "top : -60%;" +

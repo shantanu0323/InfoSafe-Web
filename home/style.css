@@ -215,10 +215,15 @@ table {
     position: static;
     top: 0%;
     left: 0%;
+    transition: all 0.5s;
 }
 
 #preview-container {
     /*    background-color: green*/
+}
+
+#pads {
+    transition: all 0.5s;
 }
 
 .pads {
@@ -259,7 +264,7 @@ table {
 }
 
 .qr-border-container {
-    z-index: 20px;
+    z-index: 20;
     top: 14px;
     left: 88px;
     width: 220px;
@@ -268,6 +273,41 @@ table {
     border: 2px solid white;
 }
 
+#qr-done {
+    opacity: 0;
+    z-index: 30;
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    background-color: rgba(255,255,255,0.5);
+    top: 0;
+    left: 0;
+    transition: all 0.5s;
+    border-radius: 20px
+}
+
+#tick-icon {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transition: all 0.5s;
+    transform: translate(-50%,0);
+    width: 0px;
+    height: 0px;
+}
+
+#qr-done-text {
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    color: #00aaaa;
+    left: 50%;
+    transform: translate(-50%,0);
+    font-weight: bold;
+}
 .scanner-container {
     border-bottom: 2px solid #00cc99;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 220, 150, 0.5));
