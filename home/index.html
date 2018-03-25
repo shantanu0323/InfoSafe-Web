@@ -57,7 +57,7 @@
         </div>
 
         <input type="button" value="Scan Patient's Identity" onclick="startScanning()" id="scan-patient">
-        <input type="button" value="X" onclick="stopScanningInfo()" id="stop-scanning">
+        <input type="button" value="X" onclick="stopScanningAndReset()" id="stop-scanning">
         <div id="preview-container">
             <video id="preview"></video>
             <div class="pads">
@@ -80,7 +80,7 @@
             <input id="otp4" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
             <input id="otp5" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
         </div>
-        <input id="retrieve-patient-info" type="button" value="Retrieve Patient Information">
+        <input id="retrieve-patient-info" type="button" value="Retrieve Patient Information" onclick="startRetrieving()">
 
     </div>
 
