@@ -68,7 +68,7 @@
             </div>
             <div class="qr-border-container">
                 <div class="scanner-container">
-                    
+
                 </div>
             </div>
         </div>
@@ -81,6 +81,63 @@
             <input id="otp5" class="otp-fields" type="number" min="0" max="9" maxlength="1" oninput="setFocus(this)">
         </div>
         <input id="retrieve-patient-info" type="button" value="Retrieve Patient Information" onclick="startRetrieving()">
+
+        <div class="patient-info-container" id="patient-info-container">
+            <img src="../assets/patient-icon.png" id="patient-icon">
+
+            <table>
+                <tr>
+                    <td class="patient-label">
+                        <img class="label-icon" src="../assets/label-icons/ic-name.png">
+                    </td>
+                    <td class="patient-value" id="patient-name">
+                        Patient's Name
+                    </td>
+                </tr>
+                <tr>
+                    <td class="patient-label">
+                        <img class="label-icon" src="../assets/label-icons/ic-age.png">
+                    </td>
+                    <td class="patient-value" id="patient-age">
+                        Age
+                    </td>
+                </tr>
+                <tr>
+                    <td class="patient-label">
+                        <img class="label-icon" src="../assets/label-icons/ic-bloodgroup.png">
+                    </td>
+                    <td class="patient-value" id="patient-bloodgroup">
+                        Bloodgroup
+                    </td>
+                </tr>
+                <tr>
+                    <td class="patient-label">
+                        <img class="label-icon" src="../assets/label-icons/ic-gender.png">
+                    </td>
+                    <td class="patient-value" id="patient-gender">
+                        Gender
+                    </td>
+                </tr>
+                <tr>
+                    <td class="patient-label">
+                        <img class="label-icon" src="../assets/label-icons/ic-email.png">
+                    </td>
+                    <td class="patient-value" id="patient-email">
+                        Email ID
+                    </td>
+                </tr>
+                <tr>
+                    <td class="patient-label">
+                        <img class="label-icon" src="../assets/label-icons/ic-phone.png">
+                    </td>
+                    <td class="patient-value" id="patient-phone">
+                        Phone No
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input type="button" id="register-patient" value="Register Patient">
+        <input type="button" value="X" onclick="stopScanningAndReset()" id="stop-registering-patient">
 
     </div>
 

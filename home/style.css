@@ -187,7 +187,9 @@ table {
 }
 
 #stop-scanning:hover,
-#stop-scanning:focus {
+#stop-scanning:focus,
+#stop-registering-patient:hover,
+#stop-registering-patient:focus {
     background: rgb(200, 100, 209);
     color: white;
     cursor: pointer;
@@ -359,6 +361,110 @@ input[type=number]::-webkit-outer-spin-button {
 
 #retrieve-patient-info:active {
     background-color: white;
+}
+
+.patient-info-container {
+    position: absolute;
+    opacity: 0;
+/*    top: 20%;*/
+    top: -60%;
+    left: 75%;
+    transform: translate(-50%, 0);
+    width: 30%;
+    height: 46%;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 60px 20px 20px 20px;
+    transition: all 1s;
+}
+
+#patient-icon {
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: none;
+    border-radius: 50%;
+    top: -40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.patient-label {
+    text-align: center;
+    width: 60px;
+    padding-top: 4px;
+}
+
+.label-icon {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 7px;
+}
+
+.patient-value {
+    padding-left: 20px;
+    letter-spacing: 2px;
+    font-size: 20px;
+    color: white;
+}
+
+#register-patient {
+    position: absolute;
+    opacity: 0;
+    top: 85%;
+    /*    left: 73%;*/
+    left: -10%;
+    transform: translate(-50%, 0);
+    border: none;
+    background: none;
+    background-color: #33ee77;
+    padding: 10px;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.5);
+    width: 200px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    transition: all 0.5s;
+}
+
+
+#register-patient:hover,
+#register-patient:focus {
+    background-color: #e4ed40;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.5);
+}
+
+#register-patient:active {
+    background-color: white;
+}
+
+#stop-registering-patient {
+    position: absolute;
+    /*        top: 85%;*/
+    top: -20%;
+    /*        left: 82%;*/
+    left: 25%;
+    border: none;
+    font-size: 18px;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    color: rgb(200, 100, 209);
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(200, 100, 209);
+    transition: all 0.5s;
 }
 
 

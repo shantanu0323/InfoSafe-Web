@@ -17,6 +17,13 @@ var OTP = "";
 var inverseKey = null;
 var originalKey = null;
 
+var characters = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            ' ', '@', '.', '+', '-',
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
+
 function execute() {
 
     scanPatient = document.getElementById('scan-patient');
@@ -158,8 +165,84 @@ function startRetrieving() {
 
         originalKey = (encryptedKey * inverseKey) % n;
         console.log("originalKey = " + originalKey);
-        
+        startDecrypting();
     }
+}
+
+function startDecrypting() {
+
+    console.log("patientUserId = " + patientUserId);
+    var patientRef = firebase.database().ref("users/" + patientUserId);
+    patientRef.once('value').then(function (snapshot) {
+        if (snapshot.hasChild("name")) {
+            console.log("TRUE");
+        } else {
+            console.log("FALSE");
+        }
+        decryptDetails(
+            snapshot.val().name,
+            snapshot.val().age,
+            snapshot.val().bloodgroup,
+            snapshot.val().gender,
+            snapshot.val().email,
+            snapshot.val().phone
+        );
+    });
+
+
+}
+
+function decryptDetails(name, age, bloodgroup, gender, email, phone) {
+    var dName, dAge, dBloodgroup, dGender, dEmail, dPhone;
+    dName = decryptText(name);
+    dAge = decryptText(age);
+    dBloodgroup = decryptText(bloodgroup);
+    dGender = decryptText(gender);
+    dEmail = decryptText(email);
+    dPhone = decryptText(phone);
+
+    showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone);
+}
+
+function showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone) {
+    var nameField = document.getElementById("patient-name");
+    var ageField = document.getElementById("patient-age");
+    var bloodgroupField = document.getElementById("patient-bloodgroup");
+    var genderField = document.getElementById("patient-gender");
+    var emailField = document.getElementById("patient-email");
+    var phoneField = document.getElementById("patient-phone");
+
+    nameField.innerHTML = dName;
+    ageField.innerHTML = dAge;
+    bloodgroupField.innerHTML = dBloodgroup;
+    genderField.innerHTML = dGender;
+    emailField.innerHTML = dEmail;
+    phoneField.innerHTML = dPhone;
+
+    stopScanningAndShowPatientDetails();
+}
+
+function decryptText(text) {
+    var originalText = "";
+    var p;
+    var c;
+    var inverseOriginalKey = modInverse(originalKey, characters.length);
+    for (var i = 0; i < text.length; i++) {
+        c = getIndex(text.charAt(i));
+        p = (c * inverseOriginalKey) % characters.length;
+        originalText += characters[p];
+    }
+    return originalText.toString();
+}
+
+function getIndex(c) {
+    var i;
+    for (i = 0; i < characters.length; i++) {
+        if (c == characters[i]) {
+            break;
+        }
+    }
+    return i;
 }
 
 function modInverse(a, m) {
@@ -176,6 +259,7 @@ function startScanning() {
     scanPatient.setAttribute("style",
         "top : 25%;" +
         "left : 71%;" +
+        "opacity: 1;" +
         "background : none;" +
         "color : rgb(200, 100, 209);" +
         "box-shadow : 0px 0px  0px 0px rgba(0,0,0,0);" +
@@ -225,6 +309,29 @@ function resetAllValues() {
 function stopScanningAndReset() {
     resetAllValues();
     stopScanningInfo();
+    var patientInfoContainer = document.getElementById("patient-info-container");
+    var registerPatient = document.getElementById("register-patient");
+    var stopRegisteringPatient = document.getElementById("stop-registering-patient");
+
+    patientInfoContainer.setAttribute("style",
+        "top : -60%;" +
+        "left : 75%;" +
+        "opacity : 0;"
+    );
+
+    registerPatient.setAttribute("style",
+        "top : 85%;" +
+        "left : -10%;" +
+        "opacity : 0;"
+    );
+
+    stopRegisteringPatient.setAttribute("style",
+        "top : -20%;" +
+        "left : 25%;" +
+        "opacity : 1;"
+    );
+
+
 }
 
 
@@ -233,6 +340,7 @@ function stopScanningInfo() {
     scanPatient.setAttribute("style",
         "top : 50%;" +
         "left : 75%;" +
+        "opacity: 1;" +
         "background : #ff7043;" +
         "color : white;" +
         "box-shadow : 0px 0px 10px 1px rgba(0,0,0,0.5);" +
@@ -259,5 +367,44 @@ function stopScanningInfo() {
         "left: 25%;" +
         "opacity:0;"
     );
+
+}
+
+function stopScanningAndShowPatientDetails() {
+
+    stopScanningInfo();
+
+    var patientInfoContainer = document.getElementById("patient-info-container");
+    var registerPatient = document.getElementById("register-patient");
+    var stopRegisteringPatient = document.getElementById("stop-registering-patient");
+
+    patientInfoContainer.setAttribute("style",
+        "top : 20%;" +
+        "left : 75%;" +
+        "opacity : 1;"
+    );
+
+    registerPatient.setAttribute("style",
+        "top : 85%;" +
+        "left : 73%;" +
+        "opacity : 1;"
+    );
+
+    stopRegisteringPatient.setAttribute("style",
+        "top : 85%;" +
+        "left : 82%;" +
+        "opacity : 1;"
+    );
+
+    scanPatient.setAttribute("style",
+        "top : -30%;" +
+        "opacity : 0;" +
+        "left : 75%;" +
+        "background : #ff7043;" +
+        "color : white;" +
+        "box-shadow : 0px 0px 10px 1px rgba(0,0,0,0.5);" +
+        "border : none;"
+    );
+
 
 }
