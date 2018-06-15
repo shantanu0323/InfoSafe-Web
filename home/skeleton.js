@@ -51,7 +51,7 @@ function execute() {
                 document.getElementById('hospital-address').textContent = snapshot.val().address;
                 document.getElementById('hospital-phone').textContent = snapshot.val().phone;
                 document.getElementById('hospital-email').textContent = snapshot.val().email;
-             
+
                 setTimeout(function () {
                     document.getElementById('container').style.opacity = '1';
                 }, 100);
@@ -216,15 +216,14 @@ function startDecrypting() {
             snapshot.val().bloodgroup,
             snapshot.val().gender,
             snapshot.val().email,
-            snapshot.val().phone,
-            snapshot.val().profile_pic
+            snapshot.val().phone
         );
     });
 
 
 }
 
-function decryptDetails(name, age, bloodgroup, gender, email, phone, profile_pic) {
+function decryptDetails(name, age, bloodgroup, gender, email, phone) {
     var dName, dAge, dBloodgroup, dGender, dEmail, dPhone;
     dName = decryptText(name);
     dAge = decryptText(age);
@@ -234,7 +233,7 @@ function decryptDetails(name, age, bloodgroup, gender, email, phone, profile_pic
     dPhone = decryptText(phone);
 
     updateRegisterButton();
-    showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone, profile_pic);
+    showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone);
 }
 
 function updateRegisterButton() {
@@ -262,14 +261,13 @@ function updateRegisterButton() {
     });
 }
 
-function showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone, profile_pic) {
+function showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone) {
     var nameField = document.getElementById("patient-name");
     var ageField = document.getElementById("patient-age");
     var bloodgroupField = document.getElementById("patient-bloodgroup");
     var genderField = document.getElementById("patient-gender");
     var emailField = document.getElementById("patient-email");
     var phoneField = document.getElementById("patient-phone");
-    var profilePicField = document.getElementById("profile-pic")
 
     nameField.innerHTML = dName;
     ageField.innerHTML = dAge;
@@ -277,7 +275,6 @@ function showDecryptedDetails(dName, dAge, dBloodgroup, dGender, dEmail, dPhone,
     genderField.innerHTML = dGender;
     emailField.innerHTML = dEmail;
     phoneField.innerHTML = dPhone;
-    profilePicField.src = profile_pic;
 
     stopScanningAndShowPatientDetails();
 }
